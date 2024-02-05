@@ -1,4 +1,5 @@
 from flask import Flask, request, jsonify
+
 import db_solution
 
 app = Flask(__name__)
@@ -18,7 +19,7 @@ def deposit():
     user_name = data.get("name")
     amount = data.get("amount")
     if user_name and amount is not None:
-        deposit(user_name, amount)
+        db_solution.deposit_funds(user_name, amount)
         return "Deposit successful", 200
     else:
         return "Invalid request", 400
@@ -41,7 +42,7 @@ def create_user():
     data = request.get_json()
     name = data.get("name")
     if name:
-        db_solution.create_user(name)
+        db_solution.create_account(name)
         return "User successfully created", 200
     else:
         return "Invalid name", 400
