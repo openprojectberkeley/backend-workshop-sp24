@@ -20,7 +20,7 @@ def create_account(name):
     pass
 
 
-def transfer_amoount(name1, name2, amount):
+def transfer_amoount(sender_name, receiver_name, amount):
     """
     Transfers the specified amount from account under name1 to name2
     """
