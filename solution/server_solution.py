@@ -4,9 +4,10 @@ import db_solution
 
 app = Flask(__name__)
 
-@app.route("/get-balance", methods=["GET"])
+@app.route("/get-balance", methods=["POST"])
 def get_balance():
-    name = request.args.get("name")
+    data = request.get_json()
+    name = data.get("name")
     balance = db_solution.get_balance(name)
     if balance is not None:
         return jsonify({ "balance": balance }), 200
